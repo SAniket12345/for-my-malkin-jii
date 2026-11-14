@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Surprise for My Favourite बच्चा 💗</title>
+<style>
+  :root { --pink:#ff6f9f; --deep:#9d315f; --cream:#fff8f1; --ink:#553346; }
+  * { box-sizing:border-box; }
+  body {
+    margin:0; min-height:100vh; font-family: "Trebuchet MS", Arial, sans-serif;
+    color:var(--ink); background:radial-gradient(circle at top,#fff 0,#ffeaf2 42%,#f8d9e7 100%);
+    overflow-x:hidden;
+  }
+  .wrap { width:min(920px,92%); margin:0 auto; padding:34px 0 55px; text-align:center; }
+  .tag { display:inline-block; padding:8px 16px; border:1px solid #ffc1d5; border-radius:30px; background:#ffffffb8; font-size:.9rem; }
+  h1 { font-size:clamp(2rem,6vw,3.8rem); color:#c33e76; margin:18px 0 10px; line-height:1.08; }
+  .intro { max-width:680px; margin:0 auto; font-size:clamp(1rem,2.6vw,1.15rem); line-height:1.75; }
+  .sorry-card { margin:25px auto 28px; padding:22px; max-width:700px; border-radius:24px; background:#ffffffc9; box-shadow:0 12px 35px #9d315f18; border:1px solid #ffe0eb; }
+  .sorry-card h2 { color:#b43d70; margin:0 0 8px; font-size:1.55rem; }
+  .sorry-card p { margin:8px 0; line-height:1.65; }
+  .gate-area { margin:34px auto 22px; }
+  .hint { font-weight:700; color:#a33b6a; letter-spacing:1px; margin-bottom:13px; }
+  .gate {
+    width:min(360px,90vw); height:170px; margin:auto; position:relative; display:flex;
+    border:9px solid #8c4d63; border-bottom-width:13px; border-radius:12px 12px 3px 3px;
+    background:#f6c4d5; box-shadow:0 12px 22px #7e36502b; overflow:hidden;
+    perspective:800px;
+  }
+  .gate::before { content:""; position:absolute; z-index:2; left:50%; top:0; bottom:0; width:7px; background:#8c4d63; transform:translateX(-50%); }
+  .door {
+    width:50%; height:100%; border:2px solid #a85d78; position:relative; cursor:pointer;
+    background:repeating-linear-gradient(90deg,#f4b4cb 0 13px,#f9cddd 13px 26px);
+    transition:transform 1s ease; transform-origin:left center; z-index:1;
+  }
+  .door.right { transform-origin:right center; }
+  .door::after { content:""; position:absolute; top:45%; width:10px; height:10px; border-radius:50%; background:#9a5270; }
+  .door.left::after { right:10px; } .door.right::after { left:10px; }
+  .gate.open .door.left { transform:rotateY(-105deg); }
+  .gate.open .door.right { transform:rotateY(105deg); }
+  .gate-label { position:absolute; z-index:3; left:50%; top:50%; transform:translate(-50%,-50%); background:#fff8f1ed; padding:9px 15px; border-radius:20px; color:#9d315f; font-weight:800; white-space:nowrap; pointer-events:none; box-shadow:0 3px 12px #6d2c4722; }
+  button {
+    border:0; border-radius:30px; padding:13px 23px; margin:8px 5px; cursor:pointer;
+    font-size:1rem; font-weight:800; color:white; background:linear-gradient(135deg,#ff77a6,#d64d85);
+    box-shadow:0 7px 16px #d64d8533; transition:transform .18s, box-shadow .18s;
+  }
+  button:hover { transform:translateY(-2px); box-shadow:0 10px 20px #d64d8544; }
+  button:focus-visible { outline:3px solid #8e3159; outline-offset:3px; }
+  .secondary { color:#a63d6c; background:#fff; border:1px solid #f4b5cc; }
+  .note { display:none; max-width:740px; margin:25px auto; padding:clamp(20px,5vw,36px); background:#fffdfb; border:2px dashed #f4a9c4; border-radius:26px; box-shadow:0 14px 35px #9d315f18; animation:pop .55s ease both; }
+  .note.show { display:block; }
+  @keyframes pop { from{opacity:0;transform:translateY(15px) scale(.97)} to{opacity:1;transform:none} }
+  .note h2 { color:#d0447c; font-size:clamp(2.2rem,8vw,4.4rem); margin:3px 0 14px; line-height:1.02; }
+  .note p { line-height:1.8; font-size:1.08rem; margin:10px auto; }
+  .treats { display:flex; justify-content:center; gap:18px; flex-wrap:wrap; margin:22px 0; }
+  .joy { width:112px; height:145px; border-radius:48% 48% 42% 42%; background:linear-gradient(90deg,#fff 0 48%,#f7a7bd 48% 100%); border:3px solid #e8a1b7; box-shadow:0 8px 16px #8c4d6320; display:flex; flex-direction:column; justify-content:center; align-items:center; transform:rotate(-5deg); }
+  .joy:nth-child(2) { transform:rotate(5deg); }
+  .joy:nth-child(3) { transform:rotate(-2deg); }
+  .joy strong { color:#9e315e; font-size:.8rem; background:#fff8; padding:4px; border-radius:10px; }
+  .joy span { font-size:2rem; margin:5px; }
+  .quote { background:#fff0f5; padding:15px 18px; border-radius:18px; color:#9d315f; font-weight:700; }
+  .love-note { display:none; margin:22px auto 0; max-width:650px; background:#fff0f6; border-radius:22px; padding:24px; border:1px solid #ffc4d8; animation:pop .5s ease both; }
+  .love-note.show { display:block; }
+  .love-note h3 { color:#c33e76; font-size:1.8rem; margin:0 0 10px; }
+  .footer { margin-top:30px; color:#9d6680; font-size:.9rem; }
+  .heart { position:fixed; bottom:-30px; pointer-events:none; animation:float 6s linear forwards; opacity:.8; z-index:5; }
+  @keyframes float { to { transform:translateY(-110vh) rotate(25deg); opacity:0; } }
+  @media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:.01ms !important; transition-duration:.01ms !important; } }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="tag">A tiny surprise, made with lots of love 💌</div>
+  <h1>Hey, my bacchaaaaaa 🥺💗</h1>
+  <p class="intro">Before anything else, I want you to know that you matter so much to me. I never want my words or my mood to make your heart feel heavy.</p>
+
+  <section class="sorry-card">
+    <h2>I'm really sorry. ❤️</h2>
+    <p>I'm sorry for making you sad and for scolding you. I know I could have spoken more gently, and I genuinely regret making you feel bad.</p>
+    <p>Please don't keep that sad feeling with you. I love your smile, your little moods, your cute बातें and every little thing that makes you <em>you</em>. 🫶</p>
+    <p>Whenever you get time, let's have a little party. Momo treat is on me, and Kinder Joy too! 🥟🍫 No hurry—only whenever you feel like it. 💕</p>
+  </section>
+
+  <section class="gate-area">
+    <div class="hint">🎀 CLICK TO OPEN YOUR LITTLE SURPRISE 🎀</div>
+    <div class="gate" id="gate" role="button" tabindex="0" aria-label="Open the surprise gate" onclick="openGate()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openGate();}">
+      <div class="door left"></div><div class="door right"></div>
+      <div class="gate-label">OPEN ME 💗</div>
+    </div>
+    <button onclick="openGate()">Open the gate ✨</button>
+  </section>
+
+  <section class="note" id="childNote" aria-live="polite">
+    <div style="font-size:2rem">🌈 🧸 🎈 🌸</div>
+    <h2>HAPPY<br>CHILDREN'S DAY!</h2>
+    <p><strong>Happy Children's Day to you, my sweetest बच्चा! 💖</strong></p>
+    <p>Never lose the beautiful, playful and innocent little part of yourself. Keep laughing loudly, dreaming freely, being curious, and finding happiness in the smallest things.</p>
+    <p class="quote">You are my favourite बच्चा, and you will always be my बच्चा. 🥹💕</p>
+    <div class="treats" aria-label="Kinder Joy treats">
+      <div class="joy"><strong>KINDER JOY</strong><span>🍫</span><small>surprise!</small></div>
+      <div class="joy"><strong>KINDER JOY</strong><span>🎁</span><small>for you!</small></div>
+      <div class="joy"><strong>KINDER JOY</strong><span>🍬</span><small>one more!</small></div>
+    </div>
+    <p>I love you very, very, very much—more than these many little hearts can ever say. ❤️💗💞</p>
+    <p>Have the happiest Children's Day, my Malkin! 👑🌷</p>
+    <button onclick="showLoveNote()">Click here for one more note 💌</button>
+    <div class="love-note" id="loveNote" aria-live="polite">
+      <h3>I LOVE YOU, MY बच्चा! 💗</h3>
+      <p>I love you very much, my बच्चा. You are my Malkin, my favourite person and my world, my favorite human being in the world, my lifeline , my happiness🥰</p>
+      <p>Keep that lovely smile safe. Sending you the biggest hug, a thousand kisses and unlimited Kinder Joys! 🤗😘🍫</p>
+      <p><strong>Always your silly person. ❤️</strong></p>
+    </div>
+  </section>
+  <div class="footer">Made especially for you, with a little sorry and a whole lot of love. 💗</div>
+</main>
+<script>
+  function openGate() {
+    document.getElementById('gate').classList.add('open');
+    const note = document.getElementById('childNote');
+    note.classList.add('show');
+    setTimeout(() => note.scrollIntoView({behavior:'smooth', block:'start'}), 450);
+    hearts();
+  }
+  function showLoveNote() {
+    const note = document.getElementById('loveNote');
+    note.classList.add('show');
+    note.scrollIntoView({behavior:'smooth', block:'center'});
+    hearts();
+  }
+  function hearts() {
+    const symbols = ['💗','💕','💖','🌸','✨','🫶'];
+    for (let i=0; i<14; i++) {
+      const el = document.createElement('span');
+      el.className = 'heart';
+      el.textContent = symbols[Math.floor(Math.random()*symbols.length)];
+      el.style.left = Math.random()*100 + 'vw';
+      el.style.fontSize = (18 + Math.random()*18) + 'px';
+      el.style.animationDelay = (Math.random()*.8) + 's';
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 7000);
+    }
+  }
+</script>
+</body>
+</html>
